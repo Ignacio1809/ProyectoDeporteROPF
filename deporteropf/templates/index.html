@@ -46,13 +46,20 @@
           <li><a class="nav-link scrollto" href="/about">¿Quienes somos?</a></li>
           <li><a class="nav-link scrollto" href="/services">Servicios</a></li>
           <li><a class="nav-link scrollto " href="/galeria">Galeria</a></li>
-          <li><a class="nav-link scrollto" href="/team">Equipo</a></li>
+          <li><a class="nav-link scrollto" href="/team">Ver Perfil</a></li>
+
+          {% if not request.user.is_authenticated %}
           <li><a class="nav-link scrollto" href="/signup">Registrate</a></li>
+          {% else %}
+          <li><a class="nav-link scrollto" href="/logout">Cerrar Sesión</a></li>
+          {% endif %}
+
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
-
-      <a class="get-started-btn scrollto" href="/login">Inicia Sesión</a>
+      {% if not request.user.is_authenticated %}
+      <a class="get-started-btn scrollto" href="/login">Bienvenido</a>
+      {% endif %}
 
     </div>
   </header><!-- End Header -->
