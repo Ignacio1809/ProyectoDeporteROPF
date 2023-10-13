@@ -1,9 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 import re
-
+from .models import cliente
 # Create your views here.
 def Home(request):
     return render(request,"index.html")
@@ -13,7 +12,7 @@ def is_valid_gmail(email):
     pattern = r'^[a-zA-Z0-9_.+-]+@gmail\.com$'
     return re.match(pattern, email)
 
-def signup(request):
+#def signup(request):
     if request.method=="POST":
         number=request.POST.get('usernumber')
         email=request.POST.get('email')
@@ -67,8 +66,40 @@ def handlelogin(request):
 
     return render(request,"handlelogin.html")
 
-def CrearCliente(request):
-    pass
+def signup(request):
+    if request.method == 'POST':
+        number = request.POST['usernumber']
+        name = request.POST['fname']
+        lname = request.POST['lastname']
+        email = request.POST['email']
+        weight = float(request.POST['weight'])
+        height = float(request.POST['height'])/100
+        pass1=request.POST.get('pass1')
+        pass2=request.POST.get('pass2')
+        imc = weight/height**2
+        birth= request.POST['birthdate']
+
+        if len(number)>9 or len(number)<9:
+            messages.info(request, "El telefono ingresado debe tener al menos 9 dígitos")
+            return redirect('/signup')
+       
+        if pass1!=pass2:
+            messages.info(request, "Las contraseñas ingresadas no son iguales.")
+            return redirect('/signup')
+        else:
+            passwrd= pass1
+        if cliente.objects.filter(email=email).exists():
+            messages.info(request, "El correo electrónico ingresado ya está en uso.")
+            return redirect('/signup')
+
+        usuario = cliente.objects.create(
+            telefono=number, nombre=name, apellido=lname,email=email, estatura=height, peso=weight, imc=imc, fecha_nac=birth, passwrd=passwrd)
+
+        # Authenticate the user
+        messages.info(request, "Usuario creado con éxito.")
+        return redirect('/login')
+    return render(request,"signup.html")
+    
 
 def handleLogout(request):
     logout(request)
