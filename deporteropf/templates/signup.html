@@ -3,6 +3,7 @@
 SignUp
 {% endblock title %}
 {% block head %}
+<br><br>
 <h1>¡Registrate Aquí!</h1>
 <div class= "container mt-2">
     <div class="row">
@@ -29,9 +30,24 @@ SignUp
             <div class="form-group">
                 <input type="text" class="form-control mb-2" name="lastname" placeholder="Apellido(s)">
             </div>
-
+            
             <div class="form-group">
                 <input type="email" class="form-control" name="email" placeholder="email@ejemplo.com">
+            </div>
+
+             <!-- Agregado: Campo para el Peso -->
+            <div class="form-group">
+                <input type="number" step="0.01" class="form-control mt-2" name="weight" placeholder="Peso (kg)">
+            </div>
+
+            <!-- Agregado: Campo para la Estatura -->
+            <div class="form-group">
+                <input type="number" step="0.01" class="form-control mt-2" name="height" placeholder="Estatura (cm)">
+            </div>
+
+            <!-- Agregado: Campo para la Fecha de Nacimiento -->
+            <div class="form-group">
+                <input type="date" class="form-control mt-2" name="birthdate">
             </div>
 
             <div class="form-group">
