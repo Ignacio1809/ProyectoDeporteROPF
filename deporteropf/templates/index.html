@@ -36,17 +36,17 @@
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center justify-content-lg-between">
-      <a href="index.html" class="logo me-auto me-lg-0"><img src="static/images/logoDPR.png" id = "logopagina"alt="" class="img-fluid"></a>
-      <h1 class="logo me-auto me-lg-0"><a href="index.html">Deportes ROPF<span>.</span></a></h1>
+      <a  class="logo me-auto me-lg-0"><img src="static/images/logoDPR.png" id = "logopagina"alt="" class="img-fluid"></a>
+      <h1 class="logo me-auto me-lg-0"><a>Deportes ROPF<span>.</span></a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
           <li><a class="nav-link scrollto active" href="/">Inicio</a></li>
-          <li><a class="nav-link scrollto" href="/about">¿Quienes somos?</a></li>
-          <li><a class="nav-link scrollto" href="/services">Servicios</a></li>
-          <li><a class="nav-link scrollto " href="/galeria">Galeria</a></li>
-          <li><a class="nav-link scrollto" href="/team">Ver Perfil</a></li>
+          <li><a class="nav-link scrollto" href="#about">¿Quienes somos?</a></li>
+          <li><a class="nav-link scrollto" href="#services">Servicios</a></li>
+          <li><a class="nav-link scrollto " href="#testimonials">Galeria</a></li>
+          <li><a class="nav-link scrollto" href="#team">Ver Perfil</a></li>
 
           {% if not request.user.is_authenticated %}
           <li><a class="nav-link scrollto" href="/signup">Registrate</a></li>
@@ -410,8 +410,8 @@
             <h4>Links de Ayuda</h4>
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Inicio</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">¿Quiénes Somos?</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Servicios</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#about">¿Quiénes Somos?</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#services">Servicios</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Galeria</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Politicas privadas</a></li>
             </ul>
