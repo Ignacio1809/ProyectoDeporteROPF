@@ -12,3 +12,14 @@ class Plan(models.Model):
     beneficio= models.TextField()
     def __str__(self):
         return self.nombre_plan
+
+class cliente(models.Model):
+    telefono= models.CharField(max_length=9)
+    nombre = models.CharField(max_length=100)
+    apellido = models.CharField(max_length=100)
+    email = models.CharField(max_length=100)
+    estatura= models.IntegerField()
+    peso = models.IntegerField()
+    imc = models.IntegerField()
+    fecha_nac= models.DateField()
+    passwrd= models.CharField(max_length=12) 
