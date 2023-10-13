@@ -67,6 +67,8 @@ def handlelogin(request):
 
     return render(request,"handlelogin.html")
 
+def CrearCliente(request):
+    pass
 
 def handleLogout(request):
     logout(request)
