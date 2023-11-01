@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}
+Planes
+{% endblock title %}
+
+{% block head %}
+<h1>Bienvenido a nuestros Planes</h1>
+{% endblock head %}
+
+{% block body %}
+<div class="container">
+    <div class="row-plans">
+        {% for p in plan %}
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ p.nombre_plan }}</h5>
+                    <p class="card-text">{{ p.descripcion }}</p>
+                    <h5 class="card-text">{{ p.precio }}</h5>
+                    <a href="{% url 'single_plan' p.id %}" class="btn btn-primary">Ver detalles</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock body %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}
+Plan {{p.nombre_plan}}
+{% endblock title %}
+
+{% block head %}
+<h1>Bienvenido a nuestro plan: {{ p.nombre_plan }}</h1>
+<div class="container">
+    <div class="row">
+        <p>Descripción del plan: {{ p.descripcion_plan }}</p>
+        <!-- Suponiendo que tienes un campo llamado 'descripcion_plan' en tu modelo Plan. -->
+    </div>    
+</div>
+{% endblock head %}
+
+
