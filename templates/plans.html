@@ -14,11 +14,12 @@ Planes
         {% for p in plan %}
         <div class="col-md-4">
             <div class="card">
-                <div class="card-body">
+                <div class="card">
+                    <img class="imagen-card" src="static/images/foto.JPG" >
                     <h5 class="card-title">{{ p.nombre_plan }}</h5>
                     <p class="card-text">{{ p.descripcion }}</p>
-                    <h5 class="card-text">{{ p.precio }}</h5>
-                    <a href="{% url 'single_plan' p.id %}" class="btn btn-primary">Ver detalles</a>
+                    <h5 class="card-price">{{ p.precio }}</h5>
+                    <a href="{% url 'single_plan' p.id %}" class="card-button">Ver detalles</a>
                 </div>
             </div>
         </div>
