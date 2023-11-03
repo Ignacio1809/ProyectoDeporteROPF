@@ -32,7 +32,6 @@
 </head>
 
 <body>
-
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center justify-content-lg-between">
@@ -42,17 +41,23 @@
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto active" href="/">Inicio</a></li>
-          <li><a class="nav-link scrollto" href="/">¿Quienes somos?</a></li>
-          <li><a class="nav-link scrollto" href="/">Servicios</a></li>
-          <li><a class="nav-link scrollto " href="/">Galeria</a></li>
-          <li><a class="nav-link scrollto" href="{% url 'all_plans' %}">Planes</a></li>
-          <li><a class="nav-link scrollto" href="/signup">Registrate</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
-      <a href="/login" class="get-started-btn scrollto">Inicia Sesión</a>
+          <ul> <!--lista de enlace de navegación-->
+            <li><a class="nav-link scrollto active" href="/">Inicio</a></li>
+            <li><a class="nav-link scrollto" href="#about">¿Quienes somos?</a></li>
+            <li><a class="nav-link scrollto" href="{% url 'all_plans' %}">Planes</a></li>
+            
+            <!--Condicional de Django para verificar si el usuario está autenticado-->
+            {% if request.user.is_authenticated %}
+            <li><a class="nav-link scrollto" href="#team">Ver Perfil</a></li>
+            <li><a class="nav-link scrollto" href="/logout">Cerrar sesión</a></li>
+            {% else %}
+            <li><a class="nav-link scrollto" href="/signup">Registrarse</a></li>
+          </ul>
+          <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- fin de la navegación -->
+       
+        <a class="get-started-btn scrollto" href="/login">Iniciar Sesión</a>
+        {% endif %}
 
     </div>
   </header><!-- End Header -->
@@ -62,9 +67,9 @@
     <div class="container" data-aos="fade-up">
         <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
             <div class="col-xl-6 col-lg-8">
-{% block head %}
+  {% block head %}
 
-{% endblock head %}
+  {% endblock head %}
 
             </div>
         </div>
@@ -93,11 +98,9 @@
                 <strong>Email:</strong> Rodrigo Arriaza@gmail.com<br>
               </p>
               <div class="social-links mt-3">
-                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                <a href="https://www.youtube.com/@rodrigoarriaza5139" class="youtube"><i class="bx bxl-youtube"></i></a>
+                <a href="https://instagram.com/deporte.ropf?igshid=YTQwZjQ0NmI0OA==" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="https://instagram.com/deporte.ropf?igshid=YTQwZjQ0NmI0OA==" class="instagram"><i class="bx bxl-instagram"></i></a>
               </div>
             </div>
           </div>

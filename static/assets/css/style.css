@@ -1247,21 +1247,7 @@ section {
   width:100%
 }
 
-.presentacion{
-  height: 420px;
-  width: 50%;
-  display:flex;
-  margin:auto;
-  border-radius: 7px;
-  overflow: hidden;
-  box-sizing: border-box;
-}
-
-.presentacion .img{
-  width: 50%;
-}
-
-.presentacion .img img{
+.container .img-presentacion img{
   width: 100%;
   vertical-align: top;
 }
