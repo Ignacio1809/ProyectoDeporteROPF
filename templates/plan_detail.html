@@ -1,17 +1,34 @@
 {% extends "base.html" %}
 
 {% block title %}
-Plan {{p.nombre_plan}}
+Planes
 {% endblock title %}
 
 {% block head %}
-<h1>Bienvenido a nuestro plan: {{ p.nombre_plan }}</h1>
-<div class="container">
-    <div class="row">
-        <p>Descripción del plan: {{ p.descripcion_plan }}</p>
-        <!-- Suponiendo que tienes un campo llamado 'descripcion_plan' en tu modelo Plan. -->
-    </div>    
-</div>
+<h1>Bienvenido a nuestros Planes</h1>
 {% endblock head %}
 
+{% block body %}
+<div class="presentacion">
+    <div class="img">
+        <img src="static/images/rodri2.JPG">
+    </div>
+    <div class="plan-info">
+        <div class="plan-texto">
+            <h1>Bienvenido a nuestro plan: {{ p.nombre_plan }}</h1>
+            <h2>{{ p.duracion }}</h2>
+            <p>{{p.descripcion}}</p>
+            <p>{{p.beneficio}}</p>
+        </div>
+        <div class="precio-btn">
+            <a href="">Contratar Plan</a>
+        </div>
+    </div>
+</div>
+{% endblock body %}
 
+<h1> Bienvenido a nuestro plan: {{ p.nombre_plan }}</h1>
+    <div class="container">
+        <div class="row">
+            <p> Descripción del plan: {{ p.descripcion }}</p>
+        </div>  

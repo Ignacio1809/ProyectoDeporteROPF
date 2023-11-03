@@ -1225,12 +1225,6 @@ section {
   color: #fff;
   text-align: center;
 }
-.card-price {
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-align: center;
-  color: #28282b;
-}
 
 .card-button {
   display: block;
@@ -1251,4 +1245,83 @@ section {
 }
 .imagen-card{
   width:100%
+}
+
+.presentacion{
+  height: 420px;
+  width: 50%;
+  display:flex;
+  margin:auto;
+  border-radius: 7px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.presentacion .img{
+  width: 50%;
+}
+
+.presentacion .img img{
+  width: 100%;
+  vertical-align: top;
+}
+
+.plan-info{
+  width:50%;
+  border-radius: 0 7px 10px 7px;
+  background: #fff;
+}
+
+.plan-texto{
+  width:100%;
+}
+
+.plan-texto h1{
+  margin-left:38px;
+  padding-top: 52px;
+  font-size: 34px;
+  color: #474747;
+}
+
+.plan-texto h1, .precio-btn{
+  font-family: serif;
+}
+
+.plan-texto h2{
+  margin: 0 0 47px 38px;
+  font-size: 13px;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  color: #d2d2d2;
+  letter-spacing: 2em;
+}
+
+.plan-texto p{
+  height: 125px;
+  margin-left: 38px;
+  font-family: serif;
+  color: #8d8d8d;
+  line-height: 1.7em;
+}
+
+.precio-btn{
+  height: 103px;
+  margin-top: 17px;
+  display: flex;
+  justify-content:center;
+}
+
+.precio-btn a{
+  height: 50px;
+  width: 176px;
+  border-radius: 60px;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  color:#fff;
+  text-align: center;
+  line-height: 25px;
+  background: #9cebd5;
+  cursor: pointer;
+  text-decoration: none;
 }
