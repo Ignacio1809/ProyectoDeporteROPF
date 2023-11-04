@@ -7,7 +7,7 @@ from django.db import models
 class Plan(models.Model):
     nombre_plan = models.CharField(max_length=20)
     descripcion = models.TextField()
-    precio = models.IntegerField()
+    precio = models.FloatField()
     duracion =  models.CharField(max_length=20)
     beneficio= models.TextField()
     def __str__(self):
