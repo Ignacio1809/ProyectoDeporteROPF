@@ -1208,6 +1208,7 @@ section {
 /*--------------------------------------------------------------
 # carta de los planes
 --------------------------------------------------------------*/
+
 .card {
   width: 300px;
   overflow: hidden;
@@ -1245,6 +1246,56 @@ section {
 }
 .imagen-card{
   width:100%
+}
+@media (max-width: 768px) {
+  .card {
+    margin: 1rem; 
+    max-width: none;
+    width: auto; 
+  }
+  
+  .card-title {
+    font-size: 1.2rem; 
+  }
+  
+  .card-button {
+    padding: 0.3rem 1rem; 
+  }
+}
+/* Media Query for iPads */
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+  
+  .card {
+    /* Ajustes específicos para iPad */
+    max-width: 90%; 
+    margin: 1rem auto; 
+  }
+
+  .card-title {
+    font-size: 1.4rem; 
+    padding: 0.8rem; 
+  }
+  
+  .card-text {
+    padding: 0.8rem; 
+  }
+
+  .card-button {
+    /* Ajustes para el botón si es necesario, por ejemplo: */
+    margin-bottom: 1rem; 
+  }
+}
+
+
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (-webkit-min-device-pixel-ratio: 2) {
+  
+  
 }
 
 .container .img-presentacion img{
