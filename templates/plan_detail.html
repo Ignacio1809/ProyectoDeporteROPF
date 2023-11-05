@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block title %}
 Planes Por id
 {% endblock title %}
@@ -8,19 +8,20 @@ Planes Por id
 {%endblock head%}
 
 {% block body %}
-<div class="container">
-    <div class="img">
-        <img src="C:\Users\kelor\Documents\GitHub\ProyectoDeporteROPF\static\images\rodri2.JPG">
+<div class="container-plan">
+    <div class="container-img">
+        <img class="imagen"   src="{% static 'images/gimnasio.jpg' %}" >
     </div>
     <div class="plan-info">
         <div class="plan-texto">
             <h1>Bienvenido a nuestro plan: {{ p.nombre_plan }}</h1>
             <h2>{{ p.duracion }}</h2>
-            <p>{{p.descripcion}}</p>
-            <p>{{p.beneficio}}</p>
+            <p>{{ p.descripcion }}</p>
+            <p>{{ p.beneficio }}</p>
+            <p>{{ p.precio }}$</p>
         </div>
         <div class="precio-btn">
-            <a href="">Contratar Plan</a>
+            <a href="#">Contratar Plan</a>
         </div>
     </div>
 </div>

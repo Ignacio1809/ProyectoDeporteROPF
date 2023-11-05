@@ -1298,67 +1298,86 @@ section {
   
 }
 
-.container .img-presentacion img{
-  width: 100%;
-  vertical-align: top;
-}
-
-.plan-info{
-  width:50%;
-  border-radius: 0 7px 10px 7px;
-  background: #fff;
-}
-
-.plan-texto{
-  width:100%;
-}
-
-.plan-texto h1{
-  margin-left:38px;
-  padding-top: 52px;
-  font-size: 34px;
-  color: #474747;
-}
-
-.plan-texto h1, .precio-btn{
-  font-family: serif;
-}
-
-.plan-texto h2{
-  margin: 0 0 47px 38px;
-  font-size: 13px;
-  font-family: sans-serif;
-  text-transform: uppercase;
-  color: #d2d2d2;
-  letter-spacing: 2em;
-}
-
-.plan-texto p{
-  height: 125px;
-  margin-left: 38px;
-  font-family: serif;
-  color: #8d8d8d;
-  line-height: 1.7em;
-}
-
-.precio-btn{
-  height: 103px;
-  margin-top: 17px;
+/* Estilos base móvil (Mobile First) */
+.container-plan {
   display: flex;
-  justify-content:center;
+  flex-direction: column; /* Alinea los elementos en columna para móviles */
+  align-items: center;
+  text-align: center;
 }
 
-.precio-btn a{
-  height: 50px;
-  width: 176px;
-  border-radius: 60px;
-  font-family: sans-serif;
-  text-transform: uppercase;
-  letter-spacing: .2em;
-  color:#fff;
-  text-align: center;
-  line-height: 25px;
+.container-img .image {
+  width: 100%;
+  height: auto; /* Altura automática para mantener la proporción de la imagen */
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.plan-info {
+  padding: 20px;
+}
+
+.plan-texto h1 {
+  font-size: 24px; /* Más pequeño para móviles */
+  color: #474747;
+  margin: 0 10px; /* Añade margen a los lados para no tocar los bordes */
+}
+
+.plan-texto h2 {
+  font-size: 12px; /* Más pequeño para móviles */
+  color: #d2d2d2;
+  letter-spacing: 0.1em; /* Menor separación para móviles */
+}
+
+.plan-texto p {
+  margin: 0 10px; /* Añade margen a los lados para no tocar los bordes */
+  color: #8d8d8d;
+  line-height: 1.5em;
+}
+
+.precio-btn a {
+  display: block; /* Ocupar todo el ancho posible */
+  margin: 10px 0; /* Añade margen arriba y abajo */
+  padding: 10px 20px;
+  border-radius: 30px; /* Menos curvatura para móviles */
   background: #9cebd5;
-  cursor: pointer;
+  color: #fff;
   text-decoration: none;
 }
+
+/* Estilos para tablets y arriba */
+@media (min-width: 768px) {
+  .container-plan {
+    flex-direction: row; /* Alinea los elementos en fila para pantallas más grandes */
+    align-items: flex-start; /* Alinea elementos al inicio del contenedor */
+    text-align: left;
+  }
+
+  .container-img, .plan-info {
+    flex: 1; /* Ambos toman el 50% del ancho */
+  }
+
+  .plan-texto h1 {
+    font-size: 34px; /* Tamaño más grande para pantallas grandes */
+    margin-left: 38px;
+    padding-top: 0;
+  }
+
+  .plan-texto h2 {
+    font-size: 13px;
+    margin: 0 0 47px 38px;
+    letter-spacing: 0.2em; /* Espaciado para pantallas grandes */
+  }
+
+  .plan-texto p {
+    height: auto; /* Elimina la altura fija */
+    margin-left: 38px;
+  }
+
+  .precio-btn a {
+    width: min-content; /* Elimina el ancho fijo */
+    padding: 15px 40px; /* Añade más relleno */
+    border-radius: 60px; /* Más curvatura para pantallas grandes */
+  }
+}
+
