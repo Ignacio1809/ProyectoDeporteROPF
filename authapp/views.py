@@ -92,8 +92,12 @@ def handleLogout(request):
 def all_plans(request):
     # Obtener todos los planes
     plans = Plan.objects.all()
-    return render(request, "plans.html", {'plan': plans})
-
+    if request.method=="GET":
+        return render(request, "plans.html", {'plan': plans})
+    else:
+        id = request.POST['id']
+        plan = Plan.objects.get(id=id)
+        return render(request, "plan_detail.html", {'p': plan})
 def single_plan(request, Plan_id):
     plan = Plan.objects.get(id=Plan_id)
     return render(request, "plan_detail.html", {'p': plan})

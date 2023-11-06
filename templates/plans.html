@@ -18,7 +18,9 @@ Planes
                     <img class="imagen-card"   src="static/images/foto.JPG" >
                     <h5 class="card-title">{{ p.nombre_plan }}</h5>
                     <p class="card-text">{{ p.descripcion }}</p>
-                    <a href="{% url 'single_plan' p.id %}" class="card-button">Ver detalles</a>
+                    <form action="" method="post">{% csrf_token %}
+                        <button type="submit" value="{{p.id}}" name="id" class="card-button">ver detalles</button>
+                    </form>
                 </div>
             </div>
         </div>
