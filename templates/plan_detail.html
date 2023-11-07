@@ -28,9 +28,11 @@ Planes Por id
             <p>{{ p.beneficio }}</p>
             <p>{{ p.precio }}$</p>
         </div>
-        <div class="precio-btn">
-            <a href="#">Contratar Plan</a>
-        </div>
+        <form action="{% url 'create_payment' plan_id=p.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Contratar Plan</button>
+        </form>
+        
     </div>
 </div>
 {% endblock body %}

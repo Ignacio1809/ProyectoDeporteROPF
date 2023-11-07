@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
@@ -6,6 +6,7 @@ import re
 from .models import *
 from django.core.exceptions import ValidationError
 from django.core.exceptions import ValidationError
+from mercadopago import SDK
 
 # Create your views here.
 def Home(request):
@@ -98,6 +99,7 @@ def all_plans(request):
         id = request.POST['id']
         plan = Plan.objects.get(id=id)
         return render(request, "plan_detail.html", {'p': plan})
+    
 def single_plan(request, Plan_id):
     plan = Plan.objects.get(id=Plan_id)
     return render(request, "plan_detail.html", {'p': plan})
@@ -113,3 +115,35 @@ def validate_password_strength(value):
     if not re.search(r'[!@#$%^&*(),.?":{}|<>]', value): 
         raise ValidationError('La contraseña debe contener al menos un símbolo.')
 
+def create_payment(request, plan_id):
+    if request.method == "POST":
+        #Vamos a traer el plan seleccionado
+        plan = get_object_or_404(Plan, pk=plan_id)
+
+        #Instanciar el SDK de Mercado Pago con el access token 
+        sdk = SDK("TEST-5942360496032135-110712-dc70db76f8f00eab7b6f1684b9415b8d-1536335135")
+
+        #Crear datos de la preferencia de pago
+        preference_data = {
+            "items": [
+                {
+                    "title": plan.nombre_plan,
+                    "description": plan.descripcion,
+                    "quantity": 1,
+                    "currency_id": "CLP",
+                    "unit_price": plan.precio
+                }
+            ]
+        }
+
+        preference_response = sdk.preference().create(preference_data)
+
+        # Obtener el enlace de pago desde la respuesta
+        payment_link = preference_response["response"]["init_point"]
+
+        # Redirigir al usuario al enlace de pago
+        return redirect(payment_link)
+
+    else:
+        # Si no es POST, simplemente mostramos la página con el formulario de pago
+        return render(request, "plan_detail.html", {'p': plan})
