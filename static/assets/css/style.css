@@ -1306,7 +1306,7 @@ section {
   text-align: center;
 }
 
-.container-img .image {
+.container-img .imagen-p {
   width: 100%;
   height: auto; /* Altura automática para mantener la proporción de la imagen */
   background-size: cover;
@@ -1335,7 +1335,12 @@ section {
   line-height: 1.5em;
 }
 
+.precio-btn{
+  margin: center;
+}
+
 .precio-btn a {
+  text-align: center;
   display: block; /* Ocupar todo el ancho posible */
   margin: 10px 0; /* Añade margen arriba y abajo */
   padding: 10px 20px;
@@ -1378,6 +1383,7 @@ section {
     width: min-content; /* Elimina el ancho fijo */
     padding: 15px 40px; /* Añade más relleno */
     border-radius: 60px; /* Más curvatura para pantallas grandes */
+    
   }
 }
 

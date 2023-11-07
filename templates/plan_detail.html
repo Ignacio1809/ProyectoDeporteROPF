@@ -4,13 +4,21 @@
 Planes Por id
 {% endblock title %}
 {%block head%}
-<h1>Bienvenido a nuestros planes personalizados</h1>
+<h1>Bienvenido a nuestros planes personalizados: {{ p.nombre_plan }}</h1>
 {%endblock head%}
 
 {% block body %}
 <div class="container-plan">
     <div class="container-img">
-        <img class="imagen"   src="{% static 'images/gimnasio.jpg' %}" >
+        {% if p.id == 1 %}
+            <img class="imagen-p" src="static\images\plan_basico.JPG">
+            {% elif p.id == 2 %}
+            <img class="imagen-p" src="static\images\plan_intermedio.JPG">
+            {% elif p.id == 3 %}
+            <img class="imagen-p" src="static\images\plan_avanzado.JPG">
+            {% else %}
+            <img class="imagen-p" src="static\images\plan_basico.JPG">
+        {% endif %}
     </div>
     <div class="plan-info">
         <div class="plan-texto">
