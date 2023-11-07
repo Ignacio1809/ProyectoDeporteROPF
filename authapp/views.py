@@ -98,9 +98,7 @@ def all_plans(request):
         id = request.POST['id']
         plan = Plan.objects.get(id=id)
         return render(request, "plan_detail.html", {'p': plan})
-def single_plan(request, Plan_id):
-    plan = Plan.objects.get(id=Plan_id)
-    return render(request, "plan_detail.html", {'p': plan})
+
 
 
 def validate_password_strength(value):
