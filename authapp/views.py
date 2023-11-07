@@ -104,7 +104,6 @@ def single_plan(request, Plan_id):
     plan = Plan.objects.get(id=Plan_id)
     return render(request, "plan_detail.html", {'p': plan})
 
-
 def validate_password_strength(value):
     if not re.search(r'[A-Z]', value): 
         raise ValidationError('La contraseña debe contener al menos una letra mayúscula.')
