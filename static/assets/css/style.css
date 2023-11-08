@@ -1307,10 +1307,12 @@ section {
 }
 
 .container-img .imagen-p {
-  width: 100%;
-  height: auto; /* Altura automática para mantener la proporción de la imagen */
-  background-size: cover;
-  background-repeat: no-repeat;
+  width: 60%;
+  height: 80%; /* Altura automática para mantener la proporción de la imagen */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
 }
 
 .plan-info {
@@ -1335,20 +1337,10 @@ section {
   line-height: 1.5em;
 }
 
-.precio-btn{
-  margin: center;
+.plan-btn {
+  padding: 0.3rem 1rem; 
 }
 
-.precio-btn a {
-  text-align: center;
-  display: block; /* Ocupar todo el ancho posible */
-  margin: 10px 0; /* Añade margen arriba y abajo */
-  padding: 10px 20px;
-  border-radius: 30px; /* Menos curvatura para móviles */
-  background: #9cebd5;
-  color: #fff;
-  text-decoration: none;
-}
 
 /* Estilos para tablets y arriba */
 @media (min-width: 768px) {
@@ -1379,11 +1371,5 @@ section {
     margin-left: 38px;
   }
 
-  .precio-btn a {
-    width: min-content; /* Elimina el ancho fijo */
-    padding: 15px 40px; /* Añade más relleno */
-    border-radius: 60px; /* Más curvatura para pantallas grandes */
-    
-  }
+  
 }
-

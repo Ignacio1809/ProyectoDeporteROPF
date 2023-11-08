@@ -30,7 +30,7 @@ Planes Por id
         </div>
         <form action="{% url 'create_payment' plan_id=p.id %}" method="post">
             {% csrf_token %}
-            <button type="submit">Contratar Plan</button>
+            <button class="card-button" type="submit">Contratar Plan</button>
         </form>
         
     </div>
