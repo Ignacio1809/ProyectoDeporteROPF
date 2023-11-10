@@ -26,12 +26,16 @@ Planes Por id
             <h2>{{ p.duracion }}</h2>
             <p>{{ p.descripcion }}</p>
             <p>{{ p.beneficio }}</p>
-            <p>{{ p.precio }}$</p>
+            <p>${{ p.precio }} CLP</p>
         </div>
+        {% if request.user.is_authenticated %}
         <form action="{% url 'create_payment' plan_id=p.id %}" method="post">
             {% csrf_token %}
             <button class="card-button" type="submit">Contratar Plan</button>
         </form>
+        {%else%}
+        <a class="card-button" href="login">inicia sesion</a>
+        {% endif %}
         
     </div>
 </div>
