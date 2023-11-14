@@ -141,8 +141,31 @@ def create_payment(request, plan_id):
         payment_link = preference_response["response"]["init_point"]
 
         # Redirigir al usuario al enlace de pago
+        
         return redirect(payment_link)
+    
 
     else:
         # Si no es POST, simplemente mostramos la página con el formulario de pago
         return render(request, "plan_detail.html", {'p': plan})
+    
+
+def pago_estado(request):
+    if request.method == "GET":
+        #Obtener los parámetros del GET
+        payment_id = request.GET["payment_id"]
+        status = request.GET["status"]
+        payment_type= request.GET["payment_type"]
+
+        # Comprobar el estado del pago
+        if status == "approved":
+            # Redirigir al usuario a la página de éxito del pago
+            return redirect('pagina_exito')
+        else:
+            # Redirigir al usuario a la página de fracaso del pago
+            return redirect('pagina_fracaso')
+    else:
+        # Si no es GET, simplemente mostramos la página con el formulario de pago
+        return redirect("plans/")
+
+# Redirigir a las páginas de éxito y fracaso del pago
