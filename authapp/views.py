@@ -177,18 +177,19 @@ def payment_success(request):
         return redirect('ruta_error')
 
 def profile(request):
-    user = request.user
-    if not user.is_authenticated:
-        # Si el usuario no está autenticado, redirígelo al inicio de sesión o registro
-        return redirect('handlelogin.html')
+    if request.method== 'GET' :
+        user = request.user
+        if not user.is_authenticated:
+            # Si el usuario no está autenticado, redirígelo al inicio de sesión o registro
+            return redirect('handlelogin.html')
 
-    try:
-        cliente_obj = cliente.objects.get(email=user.email)
-        plan_actual = cliente_obj.plan_actual
-        return render(request, "profile.html", {'cliente': cliente_obj, 'plan': plan_actual})
-    except cliente.DoesNotExist:
-        # Manejar el caso de que el cliente no exista
-        return render(request, "error.html", {'mensaje': "Perfil no encontrado."})
+        try:
+            cliente_obj = cliente.objects.get(email=user.email)
+            plan_actual = cliente_obj.plan_actual
+            return render(request, "profile.html", {'c': cliente_obj})
+        except cliente.DoesNotExist:
+            # Manejar el caso de que el cliente no exista
+            return render(request, "error.html", {'mensaje': "Perfil no encontrado."})
 
 
 # Redirigir a las páginas de éxito y fracaso del pago

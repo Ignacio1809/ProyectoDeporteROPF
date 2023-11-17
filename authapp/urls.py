@@ -9,7 +9,7 @@ urlpatterns = [
     path('logout', views.handleLogout, name="handleLogout"),
     path('plans/<int:Plan_id>/', views.single_plan, name="single_plan"),
     path('create_payment/<int:plan_id>/', views.create_payment, name="create_payment"),
-    path('profile', views.profile, name="profile"),
+    path('profile/', views.profile, name="profile"),
     path('pago-fallido/', views.pago_fallido, name="pago_fallido"),
     path('pago-pendiente/', views.pago_pendiente, name="pago_pendiente")
  
