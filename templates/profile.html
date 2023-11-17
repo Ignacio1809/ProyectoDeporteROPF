@@ -18,17 +18,15 @@ Perfil
         </button>
     </div>
     {% endfor %}
-
     <ul class="list-group">
-        <li class="list-group-item bg-dark text-white"><h2>Nombre: {{ cliente.nombre }} {{ cliente.apellido }}</h2></li>
-        <li class="list-group-item bg-dark text-white"><h2>Teléfono: {{ cliente.telefono }}</h2></li>
-        <li class="list-group-item bg-dark text-white"><h2>Email: {{ cliente.email }}</h2></li>
-        <li class="list-group-item bg-dark text-white"><h2>Estatura: {{ cliente.estatura }} m</h2></li>
-        <li class="list-group-item bg-dark text-white"><h2>Peso: {{ cliente.peso }} kg</h2></li>
-        <li class="list-group-item bg-dark text-white"><h2>Plan Actual: {{ cliente.plan_actual }} </h2></li>
+        <li class="list-group-item bg-dark text-white"><h2>Nombre: {{ c.nombre }} {{ c.apellido }}</h2></li>
+        <li class="list-group-item bg-dark text-white"><h2>Teléfono: {{ c.telefono }}</h2></li>
+        <li class="list-group-item bg-dark text-white"><h2>Email: {{ c.email }}</h2></li>
+        <li class="list-group-item bg-dark text-white"><h2>Estatura: {{ c.estatura }} m</h2></li>
+        <li class="list-group-item bg-dark text-white"><h2>Peso: {{ c.peso }} kg</h2></li>
+        <li class="list-group-item bg-dark text-white"><h2>Plan Actual: {{ c.plan_actual }} </h2></li>
         <!-- Si tienes más información que quieras mostrar, sigue este patrón -->
     </ul>
-
 
     </div>
 </div>

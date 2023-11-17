@@ -207,7 +207,7 @@ User = get_user_model()
 def profile(request):
     if not request.user.is_authenticated:
         # Redirige al nombre de la ruta de inicio de sesión
-        return redirect('nombre_de_la_ruta_de_login')  # Asegúrate de que esto corresponda con tus urls.py
+        return redirect('login')  # Asegúrate de que esto corresponda con tus urls.py
 
     try:
         # Aquí usas User para realizar operaciones relacionadas con el modelo de usuario si es necesario.
@@ -217,6 +217,7 @@ def profile(request):
     except cliente.DoesNotExist:
         messages.error(request, "Perfil no encontrado.")
         return redirect('login')  # Puede ser la página de inicio o cualquier otra
+
 # Redirigir a las páginas de éxito y fracaso del pago
 
 def pago_fallido(request):
