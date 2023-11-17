@@ -71,14 +71,12 @@ def signup(request):
         if cliente.objects.filter(email=email).exists():
             messages.info(request, "El correo electrónico ingresado ya está en uso.")
             return redirect('/signup')
-    
-        # Crear usuario
-        user = User.objects.create_user(username=name,email=email,password=pass1)
-        user.save()
-        usuario = cliente.objects.create(
-            telefono=number, nombre=name, apellido=lname,email=email, estatura=height, peso=weight, imc=imc, fecha_nac=birth, passwrd=pass1)
 
-        # Informar al usuario
+        # Crear usuario de Django
+        user = User.objects.create_user(username=name, email=email, password=pass1)
+        usuario = cliente.objects.create(
+            telefono=number, nombre=name, apellido=lname, email=email, estatura=height, peso=weight, imc=imc, fecha_nac=birth, passwrd=pass1)
+
         messages.info(request, "Usuario creado con éxito.")
         return redirect('/login')
     
@@ -132,7 +130,12 @@ def create_payment(request, plan_id):
                     "currency_id": "CLP",
                     "unit_price": plan.precio
                 }
-            ]
+            ],
+            "back_urls": {
+                "success":"http://127.0.0.1:8000/profile/",
+                "failure":"http://127.0.0.1:8000/pago_fallido/",
+                "pending":"http://127.0.0.1:8000/pago_pendiente/",
+            }
         }
 
         preference_response = sdk.preference().create(preference_data)
@@ -150,22 +153,48 @@ def create_payment(request, plan_id):
         return render(request, "plan_detail.html", {'p': plan})
     
 
-def pago_estado(request):
-    if request.method == "GET":
-        #Obtener los parámetros del GET
-        payment_id = request.GET["payment_id"]
-        status = request.GET["status"]
-        payment_type= request.GET["payment_type"]
+def payment_success(request):
+    email_cliente = request.GET.get('email_cliente')
+    plan_id = request.GET.get('plan_id')
 
-        # Comprobar el estado del pago
-        if status == "approved":
-            # Redirigir al usuario a la página de éxito del pago
-            return redirect('pagina_exito')
-        else:
-            # Redirigir al usuario a la página de fracaso del pago
-            return redirect('pagina_fracaso')
-    else:
-        # Si no es GET, simplemente mostramos la página con el formulario de pago
-        return redirect("plans/")
+    if not email_cliente or not plan_id:
+        # Agregar manejo de error si falta algún parámetro
+        messages.error(request, "Información de pago incompleta.")
+        return redirect('ruta_error')  # Asegúrate de definir esta ruta
+
+    try:
+        cliente_obj = get_object_or_404(cliente, email=email_cliente)
+        plan_obj = get_object_or_404(Plan, pk=plan_id)
+
+        cliente_obj.plan_actual = plan_obj
+        cliente_obj.save()
+
+        messages.success(request, "Compra realizada con éxito.")
+        return redirect("profile.html")  
+    except Exception as e:
+        # Agregar manejo de excepciones más detallado
+        messages.error(request, str(e))
+        return redirect('ruta_error')
+
+def profile(request):
+    user = request.user
+    if not user.is_authenticated:
+        # Si el usuario no está autenticado, redirígelo al inicio de sesión o registro
+        return redirect('handlelogin.html')
+
+    try:
+        cliente_obj = cliente.objects.get(email=user.email)
+        plan_actual = cliente_obj.plan_actual
+        return render(request, "profile.html", {'cliente': cliente_obj, 'plan': plan_actual})
+    except cliente.DoesNotExist:
+        # Manejar el caso de que el cliente no exista
+        return render(request, "error.html", {'mensaje': "Perfil no encontrado."})
+
 
 # Redirigir a las páginas de éxito y fracaso del pago
+
+def pago_fallido(request):
+    return render(request, "pago_fallido.html")
+
+def pago_pendiente(request):
+    return render (request, "pago_pendiente.html")
